@@ -29,3 +29,9 @@ sale.Base.metadata.create_all(bind=engine)
 app.include_router(category_router.router, prefix="/categories", tags=["Categories"])
 app.include_router(product_router.router, prefix="/products", tags=["Products"])
 app.include_router(sale_router.router, prefix="/sales", tags=["Sales"])
+
+if __name__ == "__main__":
+    import uvicorn
+    import os
+
+    uvicorn.run("app.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
